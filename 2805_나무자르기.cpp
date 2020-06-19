@@ -6,7 +6,7 @@ using namespace std;
 
 int main(void) {
     int n, m;
-    int maxHeight = 0;
+    long long maxHeight = 0;
     vector<int> trees;
     scanf("%d %d", &n, &m);
     for (int i = 0; i < n; i++) {
@@ -15,14 +15,14 @@ int main(void) {
         trees.push_back(temp);
     }
 
-    int low, high;
+    long long low, high;
 
     low = 0;
     high = *max_element(trees.begin(), trees.end());
 
     while (low <= high) {
-        int h = (low + high) / 2;
-        int sum = 0;
+        long long h = low + (high - low) / 2;
+        long long sum = 0;
         for (int i = 0; i < n; i++) {
             if (trees[i] >= h) sum += (trees[i] - h);
         }
@@ -35,6 +35,6 @@ int main(void) {
             low = h + 1;
         }
     }
-    printf("%d", maxHeight);
+    printf("%lld", maxHeight);
     return 0;
 }
